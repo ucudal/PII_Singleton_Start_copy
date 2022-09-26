@@ -11,13 +11,13 @@ namespace LibraryTests
         /// en la consola, para "ver" lo que se escribe en la consola es necesario "redirigir" la salida en la consola
         ///  utilizando <see cref="System.Console.SetOut(TextWriter)"/> a un <see cref="StringWriter"/>.
         /// </summary>
-        [Test]
-        public void TestSayHiToTheWorld()
+        [TestCase("Hello World!\r\n")]
+        [TestCase("Hello World!\n")]
+        public void TestSayHiToTheWorld(string expected)
         {
             using (StringWriter sw = new StringWriter())
             {
                 System.Console.SetOut(sw);
-                string expected = "Hello World!\r\n";
                 Singleton<Greeter>.GetInstance().SayHiToTheWorld();
                 Assert.That(sw.ToString(), Is.EqualTo(expected));
             }
