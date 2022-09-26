@@ -17,8 +17,8 @@ namespace LibraryTests
             using (StringWriter sw = new StringWriter())
             {
                 System.Console.SetOut(sw);
-                string expected = "Hello World!\n";
-                Singleton<Greeter>.Instance.SayHiToTheWorld();
+                string expected = "Hello World!\r\n";
+                Singleton<Greeter>.GetInstance().SayHiToTheWorld();
                 Assert.That(sw.ToString(), Is.EqualTo(expected));
             }
         }
